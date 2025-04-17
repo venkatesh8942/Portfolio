@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yenduru Venkatesh - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Added Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Added Google Fonts for better typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #1ABC9C;
+            --text-color: #2C3E50;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #ECF0F1;
+            color: var(--text-color);
+            padding-top: 60px;
+            transition: background-color var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* Push footer to the bottom */
+        main {
+            flex: 1;
+        }
+
+        /* Improved scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Navbar improvements */
+        .navbar {
+            background-color: var(--primary-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+            transition: color var(--transition-speed);
+            font-weight: 500;
+        }
+
+        .nav-link {
+            position: relative;
+            margin: 0 5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .navbar-brand:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .small-profile-pic-container {
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .small-profile-pic-container:hover {
+            transform: scale(1.1);
+        }
+
+        .small-profile-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Enhanced hero section */
+        .hero {
+            background: linear-gradient(135deg, #2980b9, #6dd5fa, #ffffff);
+            color: white;
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            border: none;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: width var(--transition-speed) ease;
+            z-index: -1;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-custom:hover::before {
+            width: 100%;
+        }
+
+        .btn-custom i {
+            margin-right: 8px;
+        }
+
+        /* Improved section styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-dark {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section h2 {
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .section-dark h2 {
+            color: white;
+        }
+
+        .section-dark h2::after {
+            background: var(--accent-color);
+        }
+
+        /* Profile section improvements */
+        #profile p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Card improvements */
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Education cards */
+        .education-card-improved {
+            border-radius: 12px;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            background-color: #fff;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .education-card-improved:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .education-header {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 12px 12px 0 0;
+            padding: 1rem 1.5rem;
+        }
+
+        .education-header h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .education-card-improved .card-body {
+            padding: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .education-card-improved .card-subtitle {
+            font-weight: 500;
+            color: #6c757d;
+        }
+
+        .education-card-improved .list-unstyled li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .education-card-improved .list-unstyled i {
+            margin-top: 3px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Skills section improvements */
+        #skills {
+            background-color: var(--light-bg);
+        }
+
+        .skills-category {
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .skills-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 40px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-heading i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all var(--transition-speed);
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .skill-badge:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Projects section improvements */
+        .project-card.super {
+            border-radius: 15px;
+            background-color: white;
+            color: var(--text-color);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--card-shadow);
+        }
+
+        .project-card.super .card-body {
+            flex-grow: 1;
+            padding: 1.8rem;
+        }
+
+        .project-card.super .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .project-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card.super:hover .project-image-container img {
+            transform: scale(1.05);
+        }
+
+        .project-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .project-feature i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* Internships section improvements */
+        .internship-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 30px 20px;
+            text-align: center;
+            height: 100%;
+            background-color: #fff;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: var(--card-shadow);
+        }
+
+        .internship-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .internship-image-container {
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 3px solid var(--light-bg);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed);
+        }
+
+        .internship-card:hover .internship-image-container {
+            transform: scale(1.05);
+        }
+
+        .internship-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .internship-card .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .internship-card .card-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .internship-date {
+            font-style: italic;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Contact section improvements */
+        #contact {
+            background-color: var(--light-bg);
+        }
+
+        .contact-intro {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            height: 100%;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            transition: transform var(--transition-speed);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.2);
+        }
+
+        .contact-card h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .contact-card a,
+        .contact-card span {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 1rem;
+            word-wrap: break-word;
+            transition: color var(--transition-speed);
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer improvements */
+        .footer {
+            background-color: var(--primary-color);
+            color: #ECF0F1;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: auto;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 5px;
+            transition: all var(--transition-speed);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        /* ScrollToTop button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 100px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .contact-card {
+                margin-bottom: 20px;
+                /* Add space between stacked contact cards */
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll to top button -->
+    <div class="scroll-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <div class="small-profile-pic-container">
+                <img src="logo.jpg" alt="Venkatesh Profile">
+            </div>
+            <a class="navbar-brand" href="#">Venkatesh</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#internships">Internships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="profile-img-container">
+                    <img src="image.jpg" alt="Venkatesh Profile Photo" class="profile-img">
+                </div>
+                <h1 class="fade-in">Yenduru Venkatesh</h1>
+                <p class="fade-in">Aspiring Software Engineer</p>
+                <a href="Venkatesh_resume.pdf" class="btn btn-custom mt-3 fade-in"><i class="fas fa-download"></i>
+                    Download Resume</a>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <h2>Profile</h2>
+                <p class="text-center">I am an aspiring entry-level software engineer eager to contribute to a
+                    technology-driven firm. With a strong
+                    problem-solving mindset, I am enthusiastic about learning new technologies and committed to teamwork
+                    and
+                    hard work. My goal is to leverage my technical skills and creative thinking to develop innovative
+                    solutions
+                    that make a positive impact.</p>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section bg-light">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="row gy-4">
+
+                    <!-- B.Tech Card -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card education-card-improved">
+                            <div class="card-header education-header">
+                                <h5 class="mb-0">Bachelor of Technology (CSE)</h5>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-subtitle mb-2 text-muted">S.V. College of Engineering, Tirupati</p>
+                                <p><small><i class="far fa-calendar-alt me-2"></i>2020-2024</small></p>
+                                <p><strong>Result:</strong> 85% (First Class with Distinction)</p>
+                                <div class="mt-auto">
+                                    <p class="mb-1"><strong>Key Highlights:</strong></p>
+                                    <ul class="list-unstyled small">
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Specialized in Cloud
+                                            Computing & AI</li>
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Project: Drowsiness
+                                            Detection (Deep Learning)</li>
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Active Member – Coding
+                                            Club</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intermediate Card -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card education-card-improved">
+                            <div class="card-header education-header">
+                                <h5 class="mb-0">Intermediate (MPC)</h5>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-subtitle mb-2 text-muted">Narayana Junior College</p>
+                                <p><small><i class="far fa-calendar-alt me-2"></i>2018-2020</small></p>
+                                <p><strong>Result:</strong> 74% (First Class)</p>
+                                <div class="mt-auto">
+                                    <p class="mb-1"><strong>Key Highlights:</strong></p>
+                                    <ul class="list-unstyled small">
+                                        <li><i class="fas fa-star text-warning me-2"></i>Topper in Physics Practical
+                                        </li>
+                                        <li><i class="fas fa-users text-info me-2"></i>Member of Student Volunteer Team
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SSC Card -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card education-card-improved">
+                            <div class="card-header education-header">
+                                <h5 class="mb-0">SSC</h5>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <p class="card-subtitle mb-2 text-muted">Oxford High School</p>
+                                <p><small><i class="far fa-calendar-alt me-2"></i>2018</small></p>
+                                <p><strong>Result:</strong> 92%</p>
+                                <div class="mt-auto">
+                                    <p class="mb-1"><strong>Key Highlights:</strong></p>
+                                    <ul class="list-unstyled small">
+                                        <li><i class="fas fa-trophy text-primary me-2"></i>School Topper in Mathematics
+                                        </li>
+                                        <li><i class="fas fa-user-shield text-secondary me-2"></i>Prefect – Discipline
+                                            Committee</li>
+                                        <li><i class="fas fa-flask text-danger me-2"></i>1st Prize in Science Exhibition
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="row justify-content-center gy-4">
+
+                    <!-- Front End Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="skills-category">
+                            <h5 class="section-heading">
+                                <i class="fas fa-laptop-code"></i>
+                                Front End
+                            </h5>
+                            <div class="skills-container">
+                                <span class="skill-badge">HTML</span>
+                                <span class="skill-badge">CSS</span>
+                                <span class="skill-badge">Bootstrap</span>
+                                <span class="skill-badge">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="skills-category">
+                            <h5 class="section-heading">
+                                <i class="fas fa-database"></i>
+                                Database
+                            </h5>
+                            <div class="skills-container">
+                                <span class="skill-badge">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Programming Languages Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="skills-category">
+                            <h5 class="section-heading">
+                                <i class="fas fa-code"></i>
+                                Languages
+                            </h5>
+                            <div class="skills-container">
+                                <span class="skill-badge">C</span>
+                                <span class="skill-badge">R</span>
+                                <span class="skill-badge">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technologies Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="skills-category">
+                            <h5 class="section-heading">
+                                <i class="fas fa-microchip"></i>
+                                Technologies
+                            </h5>
+                            <div class="skills-container">
+                                <span class="skill-badge">Machine Learning</span>
+                                <span class="skill-badge">Blockchain</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Projects Section -->
+        <section id="projects" class="section bg-light">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card project-card super">
+                            <div class="project-image-container">
+                                <img src="DT.jpg" alt="Drowsiness Detection Project Image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-brain me-2"></i>Drowsiness Detection using Deep
+                                    Learning</h5>
+                                <p class="card-text">Designed a real-time drowsiness detection system using OpenCV,
+                                    Keras,
+                                    and deep learning techniques. The system monitors eye movements and yawning patterns
+                                    through a webcam feed to detect signs of fatigue.</p>
+
+                                <p class="mt-3"><strong>Key Features:</strong></p>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Eye aspect ratio (EAR) based detection</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Real-time video processing using OpenCV</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Pre-trained CNN model for face and eye recognition</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Alerts using audio signals</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Tested for accuracy on diverse lighting and face angles</span>
+                                </div>
+                                <div class="text-end mt-3">
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Learn More <i
+                                            class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card project-card super">
+                            <div class="project-image-container">
+                                <img src="foodorder2.jpg" alt="Food Ordering Project Image">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-utensils me-2"></i>Food Ordering Webpage</h5>
+                                <p class="card-text">Developed a responsive food ordering website with an engaging user
+                                    interface using HTML, CSS, and Bootstrap. The webpage showcases dynamic food menus
+                                    with
+                                    appealing visuals and interactive navigation.</p>
+
+                                <p class="mt-3"><strong>Key Features:</strong></p>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Clean and modern UI/UX with Bootstrap</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Categorized food menu with images and pricing</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Informative sections like Delivery, About, and Contact</span>
+                                </div>
+                                <div class="project-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Responsive across all devices</span>
+                                </div>
+                                <div class="text-end mt-3">
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Learn More <i
+                                            class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships" class="section">
+            <div class="container">
+                <h2>Internships</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 mb-4">
+                        <div class="card internship-card">
+                            <div class="internship-image-container">
+                                <img src="Bajaj_Finance.jpg" alt="Bajaj Finance Logo">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Junior Intern</h5>
+                                <p class="card-text">Bajaj Finance, Pune</p>
+                                <p class="internship-date"><i class="far fa-calendar-alt me-2"></i>April 2023 – July
+                                    2023</p>
+                                <p class="mt-3">Assisted in software development projects focusing on financial
+                                    technology solutions. Worked with senior developers to implement and test new
+                                    features while learning industry best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-4">
+                        <div class="card internship-card">
+                            <div class="internship-image-container">
+                                <img src="Maddisoft.jpeg" alt="Maddisoft Logo">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Project Analyst</h5>
+                                <p class="card-text">Maddisoft</p>
+                                <p class="internship-date"><i class="far fa-calendar-alt me-2"></i>June 2024 – October
+                                    2024</p>
+                                <p class="mt-3">Collaborated with project teams to analyze requirements, develop
+                                    technical specifications, and ensure successful project delivery. Gained valuable
+                                    experience in agile development methodologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p class="contact-intro">
+                    I'm currently looking for new opportunities and would love to hear from you!
+                    Whether you have a question or just want to say hi, feel free to reach out through any of the
+                    channels below.
+                </p>
+
+                <div class="row justify-content-center">
+                    <!-- Phone -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h5>Phone</h5>
+                            <a href="tel:+916305041699">+91 6305041699</a>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h5>Email</h5>
+                            <a href="mailto:venkatesguptha8942@gmail.com">venkatesguptha8942@gmail.com</a>
+                        </div>
+                    </div>
+                    <!-- LinkedIn -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <h5>LinkedIn</h5>
+                            <a href="https://www.linkedin.com/in/venkatesh-gupta" target="_blank"
+                                rel="noopener noreferrer">linkedin.com/in/venkatesh-gupta</a>
+                        </div>
+                    </div>
+                    <!-- Location -->
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h5>Location</h5>
+                            <span>Tirupati, Andhra Pradesh, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:venkatesguptha8942@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/venkatesh-gupta" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <!-- <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> -->
+            </div>
+            <p>&copy; 2025 Yenduru Venkatesh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Add scroll to top functionality
+        const scrollTopBtn = document.querySelector('.scroll-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 60, // Adjust for navbar height
+                        behavior: 'smooth'
+                    });
+
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            });
+        });
+
+        // Add animations on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const animateElements = document.querySelectorAll('.card, .skills-category, .project-card, .internship-card, .contact-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+
+</html>
